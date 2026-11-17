@@ -31,15 +31,17 @@ def inspect(root=ROOT):
         positive = copy.deepcopy(loaded[c['negative_of']])
         negative = copy.deepcopy(loaded[c['id']])
         negative['id'] = positive['id'] # id is intentionally distinct; ignore it for one mutation
-        # Each negative must remove or alter exactly one top-level FHIR field, or change one identifier value.
-        if c['id']=='patient-national-id-7-digits':
-            assert positive['identifier'][0]['value']=='00000000'
-            assert negative['identifier'][0]['value']=='0000000'
-            positive['identifier'][0]['value']='0000000'
+        # Each negative = its positive with exactly the declared single-field mutation.
+        mut = c['mutation']
+        assert len(mut) == 1 and (len(mut.get('remove', 'x').split()) == 1), c['id']
+        if 'remove' in mut:
+            assert mut['remove'] in positive and mut['remove'] not in negative, c['id']
+            positive.pop(mut['remove'])
         else:
-            path=c['expected_path'].split('.')[-1]
-            assert path in positive and path not in negative, c['id']
-            positive.pop(path)
+            (field, value), = mut['set'].items()
+            assert positive[field] != value, c['id']
+            positive[field] = value
+        assert c['expected_errors'], c['id']
         assert positive==negative, c['id']
     return len(cases)
 

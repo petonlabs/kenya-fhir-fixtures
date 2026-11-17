@@ -1,0 +1,1084 @@
+{
+  "status": "VERIFIED",
+  "validator": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)",
+  "validator_sha256": "2686590539f0b3ba7683149b25d78249f6886c04e2c326e884c5049d8947df89",
+  "ig": "ke.fhir.core#1.0.0 (20261002090010)",
+  "ig_sha256": "59a7d93f5b7691e31d27d8af62ba029fff40083e4b5c1e518ae7c76d630dedd9",
+  "terminology": "-tx n/a (no terminology server)",
+  "results": [
+    {
+      "id": "patient-national-id",
+      "expected": "pass",
+      "status": "PASS",
+      "expected_errors": [],
+      "actual_errors": [],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Warning</td><td>Patient</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/positive/patient-national-id.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "Patient"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "patient-phone",
+      "expected": "pass",
+      "status": "PASS",
+      "expected_errors": [],
+      "actual_errors": [],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Warning</td><td>Patient</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/positive/patient-phone.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "Patient"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "patient-no-identifier",
+      "expected": "fail",
+      "status": "PASS",
+      "expected_errors": [
+        "min:Patient.identifier",
+        "invariant:sha-patient-min-identifier"
+      ],
+      "actual_errors": [
+        "invariant:sha-patient-min-identifier",
+        "min:Patient.identifier"
+      ],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Error</td><td>Patient</td><td>Structural Issue</td><td>Patient.identifier: minimum required = 1, but only found 0 (from https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient|1.0.0)</td><td/><td>InstanceValidator</td></tr><tr><td>Warning</td><td>Patient</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr><tr><td>Error</td><td>Patient</td><td>Validation rule failed</td><td>Constraint failed: sha-patient-min-identifier: 'Must have at least one identifier (SHA number, phone number, household number, or national ID)' (defined in https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/negative/patient-no-identifier.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "Validation_VAL_Profile_Minimum"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient|1.0.0"
+              }
+            ],
+            "severity": "error",
+            "code": "structure",
+            "details": {
+              "text": "Patient.identifier: minimum required = 1, but only found 0 (from https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient|1.0.0)"
+            },
+            "expression": [
+              "Patient"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "Patient"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient#sha-patient-min-identifier"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient|1.0.0"
+              }
+            ],
+            "severity": "error",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: sha-patient-min-identifier: 'Must have at least one identifier (SHA number, phone number, household number, or national ID)' (defined in https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient)"
+            },
+            "expression": [
+              "Patient"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "patient-future-birth-date",
+      "expected": "fail",
+      "status": "PASS",
+      "expected_errors": [
+        "invariant:valid-birth-date"
+      ],
+      "actual_errors": [
+        "invariant:valid-birth-date"
+      ],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Error</td><td>Patient.birthDate</td><td>Validation rule failed</td><td>Constraint failed: valid-birth-date: 'Birth date should be valid and not in the future' (defined in https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient)</td><td/><td>InstanceValidator</td></tr><tr><td>Warning</td><td>Patient</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/negative/patient-future-birth-date.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 26
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 28
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient#valid-birth-date"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient|1.0.0"
+              }
+            ],
+            "severity": "error",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: valid-birth-date: 'Birth date should be valid and not in the future' (defined in https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient)"
+            },
+            "expression": [
+              "Patient.birthDate"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "Patient"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "encounter-ambulatory",
+      "expected": "pass",
+      "status": "PASS",
+      "expected_errors": [],
+      "actual_errors": [],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Information</td><td>Encounter.status</td><td>Business Rule Violation</td><td>Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1 from active ValueSet https://fhir.dha.go.ke/terminology/ValueSet/encounter-status-vs|1.0.0</td><td/><td>TerminologyEngine</td></tr><tr><td>Warning</td><td>Encounter</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/positive/encounter-ambulatory.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 9
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 23
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "TerminologyEngine"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "MSG_DRAFT_SRC_STATUS"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0"
+              }
+            ],
+            "severity": "information",
+            "code": "business-rule",
+            "details": {
+              "text": "Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1 from active ValueSet https://fhir.dha.go.ke/terminology/ValueSet/encounter-status-vs|1.0.0"
+            },
+            "expression": [
+              "Encounter.status"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "Encounter"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "encounter-in-progress",
+      "expected": "pass",
+      "status": "PASS",
+      "expected_errors": [],
+      "actual_errors": [],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Information</td><td>Encounter.status</td><td>Business Rule Violation</td><td>Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1 from active ValueSet https://fhir.dha.go.ke/terminology/ValueSet/encounter-status-vs|1.0.0</td><td/><td>TerminologyEngine</td></tr><tr><td>Warning</td><td>Encounter</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/positive/encounter-in-progress.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 9
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 26
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "TerminologyEngine"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "MSG_DRAFT_SRC_STATUS"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0"
+              }
+            ],
+            "severity": "information",
+            "code": "business-rule",
+            "details": {
+              "text": "Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1 from active ValueSet https://fhir.dha.go.ke/terminology/ValueSet/encounter-status-vs|1.0.0"
+            },
+            "expression": [
+              "Encounter.status"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "Encounter"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "encounter-no-subject",
+      "expected": "fail",
+      "status": "PASS",
+      "expected_errors": [
+        "min:Encounter.subject"
+      ],
+      "actual_errors": [
+        "min:Encounter.subject"
+      ],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Error</td><td>Encounter</td><td>Structural Issue</td><td>Encounter.subject: minimum required = 1, but only found 0 (from https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0)</td><td/><td>InstanceValidator</td></tr><tr><td>Information</td><td>Encounter.status</td><td>Business Rule Violation</td><td>Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1 from active ValueSet https://fhir.dha.go.ke/terminology/ValueSet/encounter-status-vs|1.0.0</td><td/><td>TerminologyEngine</td></tr><tr><td>Warning</td><td>Encounter</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/negative/encounter-no-subject.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "Validation_VAL_Profile_Minimum"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0"
+              }
+            ],
+            "severity": "error",
+            "code": "structure",
+            "details": {
+              "text": "Encounter.subject: minimum required = 1, but only found 0 (from https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0)"
+            },
+            "expression": [
+              "Encounter"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 9
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 23
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "TerminologyEngine"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "MSG_DRAFT_SRC_STATUS"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0"
+              }
+            ],
+            "severity": "information",
+            "code": "business-rule",
+            "details": {
+              "text": "Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1 from active ValueSet https://fhir.dha.go.ke/terminology/ValueSet/encounter-status-vs|1.0.0"
+            },
+            "expression": [
+              "Encounter.status"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "Encounter"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "encounter-no-class",
+      "expected": "fail",
+      "status": "PASS",
+      "expected_errors": [
+        "min:Encounter.class"
+      ],
+      "actual_errors": [
+        "min:Encounter.class"
+      ],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Error</td><td>Encounter</td><td>Structural Issue</td><td>Encounter.class: minimum required = 1, but only found 0 (from https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0)</td><td/><td>InstanceValidator</td></tr><tr><td>Information</td><td>Encounter.status</td><td>Business Rule Violation</td><td>Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1 from active ValueSet https://fhir.dha.go.ke/terminology/ValueSet/encounter-status-vs|1.0.0</td><td/><td>TerminologyEngine</td></tr><tr><td>Warning</td><td>Encounter</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/negative/encounter-no-class.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "Validation_VAL_Profile_Minimum"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0"
+              }
+            ],
+            "severity": "error",
+            "code": "structure",
+            "details": {
+              "text": "Encounter.class: minimum required = 1, but only found 0 (from https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0)"
+            },
+            "expression": [
+              "Encounter"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 9
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 23
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "TerminologyEngine"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "MSG_DRAFT_SRC_STATUS"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0"
+              }
+            ],
+            "severity": "information",
+            "code": "business-rule",
+            "details": {
+              "text": "Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1 from active ValueSet https://fhir.dha.go.ke/terminology/ValueSet/encounter-status-vs|1.0.0"
+            },
+            "expression": [
+              "Encounter.status"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "Encounter"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "servicerequest-lab",
+      "expected": "pass",
+      "status": "PASS",
+      "expected_errors": [],
+      "actual_errors": [],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Warning</td><td>ServiceRequest</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/positive/servicerequest-lab.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "ServiceRequest"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "servicerequest-referral",
+      "expected": "pass",
+      "status": "PASS",
+      "expected_errors": [],
+      "actual_errors": [],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Warning</td><td>ServiceRequest</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/positive/servicerequest-referral.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "ServiceRequest"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "servicerequest-no-subject",
+      "expected": "fail",
+      "status": "PASS",
+      "expected_errors": [
+        "min:ServiceRequest.subject"
+      ],
+      "actual_errors": [
+        "min:ServiceRequest.subject"
+      ],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Error</td><td>ServiceRequest</td><td>Structural Issue</td><td>ServiceRequest.subject: minimum required = 1, but only found 0 (from https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest|1.0.0)</td><td/><td>InstanceValidator</td></tr><tr><td>Warning</td><td>ServiceRequest</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/negative/servicerequest-no-subject.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "Validation_VAL_Profile_Minimum"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest|1.0.0"
+              }
+            ],
+            "severity": "error",
+            "code": "structure",
+            "details": {
+              "text": "ServiceRequest.subject: minimum required = 1, but only found 0 (from https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest|1.0.0)"
+            },
+            "expression": [
+              "ServiceRequest"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "ServiceRequest"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "servicerequest-no-authored-on",
+      "expected": "fail",
+      "status": "PASS",
+      "expected_errors": [
+        "min:ServiceRequest.authoredOn"
+      ],
+      "actual_errors": [
+        "min:ServiceRequest.authoredOn"
+      ],
+      "operation_outcome": {
+        "resourceType": "OperationOutcome",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>OperationOutcome </b></p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>Error</td><td>ServiceRequest</td><td>Structural Issue</td><td>ServiceRequest.authoredOn: minimum required = 1, but only found 0 (from https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest|1.0.0)</td><td/><td>InstanceValidator</td></tr><tr><td>Warning</td><td>ServiceRequest</td><td>Validation rule failed</td><td>Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)</td><td/><td>InstanceValidator</td></tr></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/tools/StructureDefinition/validator-version",
+            "valueString": "FHIR Validation tool Version 7.0.6 (Git# 86bf796ddc97). Built 2026-11-13T23:28:34.381Z (3 days old)"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+            "valueString": "fixtures/negative/servicerequest-no-authored-on.json"
+          }
+        ],
+        "issue": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "Validation_VAL_Profile_Minimum"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest|1.0.0"
+              }
+            ],
+            "severity": "error",
+            "code": "structure",
+            "details": {
+              "text": "ServiceRequest.authoredOn: minimum required = 1, but only found 0 (from https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest|1.0.0)"
+            },
+            "expression": [
+              "ServiceRequest"
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+                "valueInteger": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+                "valueInteger": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+                "valueString": "InstanceValidator"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+                "valueCode": "http://hl7.org/fhir/StructureDefinition/DomainResource#dom-6"
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-context",
+                "valueString": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest|1.0.0"
+              }
+            ],
+            "severity": "warning",
+            "code": "invariant",
+            "details": {
+              "text": "Constraint failed: dom-6: 'A resource should have narrative for robust management' (defined in http://hl7.org/fhir/StructureDefinition/DomainResource) (Best Practice Recommendation)"
+            },
+            "expression": [
+              "ServiceRequest"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

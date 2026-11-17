@@ -1,62 +1,60 @@
 # Kenya FHIR Conformance Fixtures
 
-**A Peton Labs open-source project (local working draft; GitHub repository not created).**
+An independent, open-source Peton Labs project. These are 12 small synthetic FHIR R4 resources, each with a machine-checkable expected outcome against the DHA **Kenya Core IG `ke.fhir.core#1.0.0`**. Each case is checked with the official HL7 validator in CI.
 
-Small, auditable synthetic FHIR R4 resources intended to become executable conformance tests against the **Kenya Core FHIR IG `ke.fhir.core#1.0.0`**.
+> **Status:** all 12 cases matched their expected outcome with HL7 validator 7.0.6, the pinned Kenya Core package, and `-tx n/a` ([report](results/validation.json)). This is **not** DHA approval or certification, and it does not cover terminology validation (see [VALIDATION.md](VALIDATION.md)).
 
-> **STATUS: CANDIDATE FIXTURES ONLY — NOT HL7 VALIDATOR VERIFIED.** Passing the local integrity checks does not establish FHIR/IG conformance, DHA approval or certification.
+## What this is (and isn't)
 
-## Why this exists
+The Kenya Core IG already publishes positive examples. This repo adds **negative** cases. Each one is a positive fixture with a single field mutated, and it must fail with **exactly** the declared set of error-level issues: no fewer, no extra. Use these cases to check that your validator or pipeline actually enforces the Kenya Core rules.
 
-The national Kenya Core IG already publishes extensive positive examples. This project is **not** a second example gallery. It focuses on **reproducible positive/negative test cases with machine-checkable expectations** that implementers can run in CI. Cases exercise a particular constraint and fail when a validator produces an unexpected error (including an unrelated error).
+It is not an example gallery, a Synthea generator, an SHA/DHA integration, or a certification service.
 
-## Current contents
+## Test matrix
 
-- 12 independently authored synthetic candidate resource fixtures: 6 positive, 6 deliberately invalid; Patient, Encounter and ServiceRequest.
-- `manifest.json` maps every fixture to an expected outcome, canonical profile, and for negative cases, a source-traceable path/constraint.
-- Pure-Python fixture-integrity checks and `unittest` tests (no dependencies).
-- Optional CLI runner for official HL7 Java validator, requiring locally provisioned verified validator JAR and `ke.fhir.core#1.0.0` FHIR package archive.
+| Fixture | Expect | Error signature(s) required | Scope |
+| --- | --- | --- | --- |
+| `patient-national-id` | pass | none | |
+| `patient-phone` | pass | none | |
+| `patient-no-identifier` | fail | `min:Patient.identifier`, `invariant:sha-patient-min-identifier` | Kenya Core |
+| `patient-future-birth-date` | fail | `invariant:valid-birth-date` | Kenya Core |
+| `encounter-ambulatory` | pass | none | |
+| `encounter-in-progress` | pass | none | |
+| `encounter-no-subject` | fail | `min:Encounter.subject` | Kenya Core (base R4 is 0..1) |
+| `encounter-no-class` | fail | `min:Encounter.class` | base R4 |
+| `servicerequest-lab` | pass | none | |
+| `servicerequest-referral` | pass | none | |
+| `servicerequest-no-subject` | fail | `min:ServiceRequest.subject` | base R4 |
+| `servicerequest-no-authored-on` | fail | `min:ServiceRequest.authoredOn` | Kenya Core (base R4 is 0..1) |
 
-## Quick start: offline fixture integrity only
+Warnings and information issues are recorded in the report but don't decide pass/fail. Every resource carries the `dom-6` (no narrative) warning, and Encounter adds a draft-CodeSystem info note.
+
+## Reproduce (macOS / Linux)
+
+Needs Java 17+, Python 3.10+, `curl` and `shasum`. No pip dependencies.
 
 ```bash
-python3 scripts/check_fixtures.py
-python3 -m unittest discover -s tests -v
+python3 scripts/check_fixtures.py            # fixture/manifest integrity (NOT conformance)
+python3 -m unittest discover -s tests -v     # integrity + runner logic
+scripts/fetch_deps.sh                        # pinned validator + IG, SHA-256 verified
+python3 scripts/run_validator.py             # real validation → results/validation.json
 ```
 
-**These are NOT FHIR conformance checks.** They verify JSON structure, catalog consistency, controlled mutations and local expectations.
+The first validator run downloads the registry dependencies (`hl7.fhir.r4.core`, `hl7.terminology.r4`, …) into `~/.fhir/packages`.
 
-## True conformance validation (not yet executed)
+## Provenance
 
-1. Download official `validator_cli.jar` from [HL7 validator releases](https://github.com/hapifhir/org.hl7.fhir.core/releases/latest), verify its release and checksum.
-2. Obtain the real FHIR NPM package for `ke.fhir.core#1.0.0`, verify `package/package.json` and record SHA-256. Do **not** substitute a different version or canonical base without updating the manifest and fixtures.
-3. Run:
+| Artifact | Version | Source | SHA-256 |
+| --- | --- | --- | --- |
+| HL7 validator | 7.0.6 | [GitHub release](https://github.com/hapifhir/org.hl7.fhir.core/releases/tag/7.0.6) | `2686590539f0b3ba7683149b25d78249f6886c04e2c326e884c5049d8947df89` |
+| Kenya Core | `ke.fhir.core#1.0.0`, build `20261002090010`, canonical `https://fhir.dha.go.ke/core`, FHIR 4.0.1 | [DHA origin](https://fhir.dha.go.ke/ig/core/package.tgz) · [immutable mirror](https://github.com/petonlabs/kenya-fhir-fixtures/releases/tag/ig-ke.fhir.core-1.0.0-20261002) | `59a7d93f5b7691e31d27d8af62ba029fff40083e4b5c1e518ae7c76d630dedd9` |
 
-```bash
-python3 scripts/run_validator.py --jar /path/to/validator_cli.jar --ig /path/to/ke.fhir.core-1.0.0.tgz
-```
+Kenya Core is not on packages.fhir.org. DHA can rebuild `package.tgz` in place under the same version, so CI downloads our mirror of the exact tested build (licensed CC0-1.0). The mirror is hash-checked, and the DHA URL is the fallback. See [SOURCES.md](SOURCES.md) for caveats: the package declares `notForPublication: true`, and the QA report lists errors.
 
-The runner uses the expected profile explicitly, parses `OperationOutcome`, and requires negative test cases to fail for the **targeted** reason without unrelated errors. It exits nonzero on missing prerequisites or inconclusive output. See [VALIDATION.md](VALIDATION.md).
+## Synthetic data and affiliation
 
-## Sources and governance
+All identifiers, names and phone numbers are artificial placeholders. Never submit them to SHA/DHA services. Peton Labs is **not affiliated with, approved or certified by** Kenya's Digital Health Agency. Code is under the MIT licence ([LICENSE](LICENSE)). Kenya Core content is DHA's, under CC0-1.0.
 
-- [Published IG landing page](https://fhir.dha.go.ke/ig/core/)
-- [Patient profile](https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-patient-definitions.html)
-- [Encounter profile](https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-encounter.html)
-- [ServiceRequest profile](https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-servicerequest.html)
-- [Upstream IG examples](https://fhir.dha.go.ke/ig/core/artifacts.html)
-- [Upstream QA report](https://fhir.dha.go.ke/ig/core/qa.html)
+## Contributing
 
-The IG site currently labels 1.0.0 a release, but its QA report also lists publication-process notices and 195 errors. It is a provenance and upstream-quality risk to investigate, not proof the profiles are unusable.
-
-All patient details, IDs and phone numbers here are intentionally artificial placeholders. Do not submit them to any real SHA/DHA service, use them for eligibility checks, or interpret them as Kenyan population simulations.
-
-**Independent work, not affiliated with, approved, or certified by Kenya's Digital Health Agency.** Do not imply certification. No employer-owned code/data or patient information used.
-
-## Contribution criteria
-
-A new fixture must (1) cite the exact IG path/constraint, (2) contain no real patient data, (3) have a declared expected validation result, (4) demonstrate no unrelated errors, and (5) pass the pinned official validator in CI before being called *verified*.
-
-## Next release gate
-
-Package acquisition + fingerprint, full validator run, fixtures repaired to zero unexpected errors, then GitHub publishing and community verification. See [NEXT-STEPS.md](NEXT-STEPS.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md). Scope is frozen at these 12 fixtures for v0.1.

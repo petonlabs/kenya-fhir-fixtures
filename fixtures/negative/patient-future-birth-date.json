@@ -1,6 +1,6 @@
 {
   "resourceType": "Patient",
-  "id": "synthetic-patient-national-id-7-digits",
+  "id": "synthetic-patient-future-birth-date",
   "meta": {
     "profile": [
       "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient"
@@ -10,7 +10,7 @@
     {
       "use": "official",
       "system": "https://fhir.dha.go.ke/fhir/identifier/nationalid",
-      "value": "0000000"
+      "value": "00000000"
     }
   ],
   "name": [
@@ -23,5 +23,5 @@
     }
   ],
   "gender": "female",
-  "birthDate": "1990-01-01"
+  "birthDate": "2999-01-01"
 }

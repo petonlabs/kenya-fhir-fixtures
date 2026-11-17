@@ -1,13 +1,17 @@
 {
   "schema_version": 1,
-  "steward": "Peton Labs (proposed; not yet published)",
+  "steward": "Peton Labs",
   "ig": {
     "package_id": "ke.fhir.core",
     "version": "1.0.0",
     "fhir_version": "4.0.1",
-    "canonical": "https://fhir.dha.go.ke/core"
+    "canonical": "https://fhir.dha.go.ke/core",
+    "package_url_origin": "https://fhir.dha.go.ke/ig/core/package.tgz",
+    "package_url_mirror": "https://github.com/petonlabs/kenya-fhir-fixtures/releases/download/ig-ke.fhir.core-1.0.0-20261002/ke.fhir.core-1.0.0.tgz",
+    "package_date": "20261002090010",
+    "package_sha256": "59a7d93f5b7691e31d27d8af62ba029fff40083e4b5c1e518ae7c76d630dedd9"
   },
-  "validation_status": "UNVERIFIED_WITH_HL7_VALIDATOR",
+  "validation_status": "see results/validation.json (written only by scripts/run_validator.py)",
   "fixtures": [
     {
       "id": "patient-national-id",
@@ -15,7 +19,8 @@
       "resourceType": "Patient",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient",
       "expected": "pass",
-      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-patient-definitions.html"
+      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-patient-definitions.html",
+      "expected_errors": []
     },
     {
       "id": "patient-phone",
@@ -23,7 +28,8 @@
       "resourceType": "Patient",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient",
       "expected": "pass",
-      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-patient-definitions.html"
+      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-patient-definitions.html",
+      "expected_errors": []
     },
     {
       "id": "patient-no-identifier",
@@ -31,23 +37,36 @@
       "resourceType": "Patient",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient",
       "expected": "fail",
-      "expected_constraint": "sha-patient-min-identifier",
-      "expected_path": "Patient.identifier",
       "negative_of": "patient-national-id",
       "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-patient-definitions.html",
-      "constraint_origin": "Kenya Core IG"
+      "mutation": {
+        "remove": "identifier"
+      },
+      "expected_errors": [
+        "min:Patient.identifier",
+        "invariant:sha-patient-min-identifier"
+      ],
+      "constraint_scope": "kenya-core",
+      "rule": "Patient.identifier min=1 and invariant sha-patient-min-identifier (base R4 is 0..*)"
     },
     {
-      "id": "patient-national-id-7-digits",
-      "file": "fixtures/negative/patient-national-id-7-digits.json",
+      "id": "patient-future-birth-date",
+      "file": "fixtures/negative/patient-future-birth-date.json",
       "resourceType": "Patient",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient",
       "expected": "fail",
-      "expected_constraint": "national-id-format",
-      "expected_path": "Patient.identifier",
       "negative_of": "patient-national-id",
       "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-patient-definitions.html",
-      "constraint_origin": "Kenya Core IG"
+      "mutation": {
+        "set": {
+          "birthDate": "2999-01-01"
+        }
+      },
+      "expected_errors": [
+        "invariant:valid-birth-date"
+      ],
+      "constraint_scope": "kenya-core",
+      "rule": "Patient.birthDate invariant valid-birth-date: $this <= today()"
     },
     {
       "id": "encounter-ambulatory",
@@ -55,7 +74,8 @@
       "resourceType": "Encounter",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter",
       "expected": "pass",
-      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-encounter.html"
+      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-encounter.html",
+      "expected_errors": []
     },
     {
       "id": "encounter-in-progress",
@@ -63,7 +83,8 @@
       "resourceType": "Encounter",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter",
       "expected": "pass",
-      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-encounter.html"
+      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-encounter.html",
+      "expected_errors": []
     },
     {
       "id": "encounter-no-subject",
@@ -71,11 +92,16 @@
       "resourceType": "Encounter",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter",
       "expected": "fail",
-      "expected_constraint": "min-cardinality",
-      "expected_path": "Encounter.subject",
       "negative_of": "encounter-ambulatory",
       "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-encounter.html",
-      "constraint_origin": "Kenya Core IG"
+      "mutation": {
+        "remove": "subject"
+      },
+      "expected_errors": [
+        "min:Encounter.subject"
+      ],
+      "constraint_scope": "kenya-core",
+      "rule": "Encounter.subject min=1 (base R4 is 0..1)"
     },
     {
       "id": "encounter-no-class",
@@ -83,11 +109,16 @@
       "resourceType": "Encounter",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter",
       "expected": "fail",
-      "expected_constraint": "min-cardinality",
-      "expected_path": "Encounter.class",
       "negative_of": "encounter-ambulatory",
       "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-encounter.html",
-      "constraint_origin": "Base FHIR R4 cardinality (also present in Kenya Core IG)"
+      "mutation": {
+        "remove": "class"
+      },
+      "expected_errors": [
+        "min:Encounter.class"
+      ],
+      "constraint_scope": "base-r4",
+      "rule": "Encounter.class 1..1 in base R4; Kenya Core does not change it"
     },
     {
       "id": "servicerequest-lab",
@@ -95,7 +126,8 @@
       "resourceType": "ServiceRequest",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest",
       "expected": "pass",
-      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-servicerequest.html"
+      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-servicerequest.html",
+      "expected_errors": []
     },
     {
       "id": "servicerequest-referral",
@@ -103,7 +135,8 @@
       "resourceType": "ServiceRequest",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest",
       "expected": "pass",
-      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-servicerequest.html"
+      "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-servicerequest.html",
+      "expected_errors": []
     },
     {
       "id": "servicerequest-no-subject",
@@ -111,11 +144,16 @@
       "resourceType": "ServiceRequest",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest",
       "expected": "fail",
-      "expected_constraint": "min-cardinality",
-      "expected_path": "ServiceRequest.subject",
       "negative_of": "servicerequest-lab",
       "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-servicerequest.html",
-      "constraint_origin": "Base FHIR R4 cardinality (also present in Kenya Core IG)"
+      "mutation": {
+        "remove": "subject"
+      },
+      "expected_errors": [
+        "min:ServiceRequest.subject"
+      ],
+      "constraint_scope": "base-r4",
+      "rule": "ServiceRequest.subject 1..1 in base R4; Kenya Core does not change it"
     },
     {
       "id": "servicerequest-no-authored-on",
@@ -123,11 +161,21 @@
       "resourceType": "ServiceRequest",
       "profile": "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest",
       "expected": "fail",
-      "expected_constraint": "min-cardinality",
-      "expected_path": "ServiceRequest.authoredOn",
       "negative_of": "servicerequest-lab",
       "source_profile_url": "https://fhir.dha.go.ke/ig/core/StructureDefinition-kenya-core-servicerequest.html",
-      "constraint_origin": "Kenya Core IG"
+      "mutation": {
+        "remove": "authoredOn"
+      },
+      "expected_errors": [
+        "min:ServiceRequest.authoredOn"
+      ],
+      "constraint_scope": "kenya-core",
+      "rule": "ServiceRequest.authoredOn min=1 (base R4 is 0..1)"
     }
-  ]
+  ],
+  "validator": {
+    "version": "7.0.6",
+    "url": "https://github.com/hapifhir/org.hl7.fhir.core/releases/download/7.0.6/validator_cli.jar",
+    "sha256": "2686590539f0b3ba7683149b25d78249f6886c04e2c326e884c5049d8947df89"
+  }
 }
