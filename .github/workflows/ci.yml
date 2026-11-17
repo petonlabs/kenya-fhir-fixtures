@@ -8,8 +8,8 @@ jobs:
     name: Fixture integrity + runner tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - run: |
@@ -20,16 +20,16 @@ jobs:
     name: HL7 validator conformance (Kenya Core ke.fhir.core#1.0.0)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: '21'
       # Caches only registry dependencies (hl7.fhir.r4.core etc.). Pinned JAR + IG are always re-downloaded and hash-checked.
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: ~/.fhir/packages
           key: fhir-packages-validator-7.0.6-ke-core-1.0.0-${{ hashFiles('deps.sha256') }}
@@ -39,7 +39,7 @@ jobs:
         run: python3 scripts/run_validator.py --report results/ci-validation.json
       - name: Upload validation report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: validation-report
           path: results/ci-validation.json

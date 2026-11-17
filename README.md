@@ -1,5 +1,7 @@
 # Kenya FHIR Conformance Fixtures
 
+[![CI](https://github.com/petonlabs/kenya-fhir-fixtures/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/petonlabs/kenya-fhir-fixtures/actions/workflows/ci.yml)
+
 An independent, open-source Peton Labs project. These are 12 small synthetic FHIR R4 resources, each with a machine-checkable expected outcome against the DHA **Kenya Core IG `ke.fhir.core#1.0.0`**. Each case is checked with the official HL7 validator in CI.
 
 > **Status:** all 12 cases matched their expected outcome with HL7 validator 7.0.6, the pinned Kenya Core package, and `-tx n/a` ([report](results/validation.json)). This is **not** DHA approval or certification, and it does not cover terminology validation (see [VALIDATION.md](VALIDATION.md)).
