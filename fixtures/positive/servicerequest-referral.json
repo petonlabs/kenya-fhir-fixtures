@@ -1,0 +1,26 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "synthetic-request-referral",
+  "meta": {
+    "profile": [
+      "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "subject": {
+    "reference": "Patient/synthetic-patient-national-id"
+  },
+  "authoredOn": "2026-01-01T09:15:00+03:00",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "306206005",
+        "display": "Referral to service"
+      }
+    ],
+    "text": "Synthetic clinical referral"
+  },
+  "priority": "urgent"
+}

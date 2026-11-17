@@ -1,0 +1,27 @@
+{
+  "resourceType": "Patient",
+  "id": "synthetic-patient-national-id",
+  "meta": {
+    "profile": [
+      "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-patient"
+    ]
+  },
+  "identifier": [
+    {
+      "use": "official",
+      "system": "https://fhir.dha.go.ke/fhir/identifier/nationalid",
+      "value": "00000000"
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": "Fixture",
+      "given": [
+        "Demo"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-01-01"
+}

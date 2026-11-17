@@ -1,0 +1,17 @@
+name: Fixture integrity (NOT FHIR conformance)
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check JSON and mutation integrity only
+        run: |
+          python3 scripts/check_fixtures.py
+          python3 -m unittest discover -s tests -v

@@ -1,0 +1,24 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "synthetic-servicerequest-no-authored-on",
+  "meta": {
+    "profile": [
+      "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-servicerequest"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "subject": {
+    "reference": "Patient/synthetic-patient-national-id"
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58410-2",
+        "display": "CBC panel - Blood by Automated count"
+      }
+    ],
+    "text": "Synthetic full haemogram order"
+  }
+}

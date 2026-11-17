@@ -1,0 +1,17 @@
+{
+  "resourceType": "Encounter",
+  "id": "synthetic-encounter-no-class",
+  "meta": {
+    "profile": [
+      "https://fhir.dha.go.ke/core/StructureDefinition/kenya-core-encounter"
+    ]
+  },
+  "status": "finished",
+  "subject": {
+    "reference": "Patient/synthetic-patient-national-id"
+  },
+  "period": {
+    "start": "2026-01-01T09:00:00+03:00",
+    "end": "2026-01-01T09:30:00+03:00"
+  }
+}
