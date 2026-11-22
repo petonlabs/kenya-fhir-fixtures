@@ -1,0 +1,31 @@
+name: Cross-HMIS CDS equivalence (synthetic)
+on:
+  push:
+    paths:
+      - 'research/cds_equivalence/**'
+      - '.github/workflows/cds-equivalence.yml'
+  pull_request:
+    paths:
+      - 'research/cds_equivalence/**'
+      - '.github/workflows/cds-equivalence.yml'
+  workflow_dispatch:
+jobs:
+  deterministic-equivalence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test independent synthetic equivalence experiment
+        working-directory: research/cds_equivalence
+        run: |
+          python -m unittest discover -s tests -v
+          python equivalence.py --report reports/equivalence.json
+      - name: Upload machine-readable report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cds-synthetic-equivalence
+          path: research/cds_equivalence/reports/equivalence.json
+          if-no-files-found: warn
