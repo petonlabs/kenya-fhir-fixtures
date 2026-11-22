@@ -51,17 +51,18 @@ def scenarios() -> list[dict[str, Any]]:
 
 
 def local_fhir_shape_check(bundle: dict[str, Any]) -> list[str]:
-    """Narrow local check ONLY; never presented as HL7 or Kenya Core validation."""
+    """Narrow envelope and cardinality check; never called official HL7 validation."""
     problems: list[str] = []
-    if bundle.get("resourceType") != "Bundle" or bundle.get("type") != "collection":
+    if not isinstance(bundle, dict) or bundle.get("resourceType") != "Bundle" or bundle.get("type") != "collection":
         problems.append("BUNDLE_SHAPE")
-    rows = bundle.get("entry")
+    rows = bundle.get("entry") if isinstance(bundle, dict) else None
     if not isinstance(rows, list):
         return problems + ["ENTRIES_MISSING"]
-    kinds = [v.get("resource", {}).get("resourceType") for v in rows if isinstance(v, dict)]
-    for expected in ("Patient", "Encounter", "Observation"):
-        if kinds.count(expected) != 1:
-            problems.append("RESOURCE_COUNT_" + expected.upper())
+    kinds = [e["resource"].get("resourceType") for e in rows
+             if isinstance(e, dict) and isinstance(e.get("resource"), dict)]
+    for kind in ("Patient", "Encounter", "Observation"):
+        if kinds.count(kind) != 1:
+            problems.append("RESOURCE_COUNT_" + kind.upper())
     return problems
 
 

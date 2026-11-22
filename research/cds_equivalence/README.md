@@ -54,3 +54,20 @@ Keep the 12 existing v0.1 profile positive/negative fixtures intact. Add this ha
 ## Next research gate
 
 Have a clinician and independent methods reviewer select an authoritative, dated guideline with an available DAK or decision table. Derive versioned reference tests separately from the adapter/runtime developers. Then introduce independent HMIS implementations and measure semantic agreement, safe abstention, operational feasibility, and adjudicated safety discrepancies.
+
+
+## Architecture v0.2
+
+The original single-file prototype now has separate modules:
+`contracts.py` (normalization, decision schema and version),
+`adapters.py` (two independent-shaped synthetic sources),
+`engine.py` (deterministic training rule),
+`comparison.py` (six strict evidence/decision/workflow equivalence axes),
+and `equivalence.py` (CLI, scenarios and reports).
+
+**Important fix:** two different haemoglobin measurements can lead to the
+same review tier, yet still fail **evidence equivalence**. A similar
+distinction applies to clinical decisions versus simulated messaging consent.
+
+See [ARCHITECTURE.md](ARCHITECTURE.md). This is an assurance experiment,
+not a production CDS runtime or a substitute for independent clinical review.

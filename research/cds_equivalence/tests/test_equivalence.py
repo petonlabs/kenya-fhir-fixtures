@@ -98,5 +98,83 @@ class EquivalenceTests(unittest.TestCase):
         self.assertEqual(before, (digest(a), digest(b)))
 
 
+
+class ArchitectureSafetyTests(unittest.TestCase):
+    """Metamorphic tests that fail if the detector only compares output labels."""
+
+    def test_same_threshold_category_different_evidence_is_not_equivalent(self):
+        from comparison import compare
+        a, b = base_pair()
+        b["lab"]["number"] = "6.9"
+        ca, cb = canonical("fhir", a), canonical("legacy", b)
+        da, db = decide(ca), decide(cb)
+        self.assertEqual(da.clinical, db.clinical)
+        axes = compare(ca, cb, da, db)["axes"]
+        self.assertFalse(axes["evidence"])
+        self.assertTrue(axes["clinical_decision"])
+
+    def test_duplicate_observation_abstains_instead_of_last_wins(self):
+        a, _ = base_pair()
+        a["bundle"]["entry"].append(copy.deepcopy(a["bundle"]["entry"][2]))
+        ctx = canonical("fhir", a)
+        self.assertIn("FHIR_RESOURCE_CARDINALITY_OBSERVATION", ctx["adapter_issues"])
+        self.assertEqual("ABSTAIN", decide(ctx).clinical)
+
+    def test_duplicate_patient_abstains(self):
+        a, _ = base_pair()
+        a["bundle"]["entry"].append(copy.deepcopy(a["bundle"]["entry"][0]))
+        self.assertEqual("ABSTAIN", decide(canonical("fhir", a)).clinical)
+
+    def test_multicode_input_requires_explicit_mapping_choice(self):
+        a, _ = base_pair()
+        a["bundle"]["entry"][2]["resource"]["code"]["coding"].append(
+            {"system": "https://example.org/local", "code": "Hb"})
+        ctx = canonical("fhir", a)
+        self.assertIn("FHIR_CODING_AMBIGUOUS_OR_MISSING", ctx["adapter_issues"])
+        self.assertEqual("ABSTAIN", decide(ctx).clinical)
+
+    def test_ucum_system_ambiguity_abstains(self):
+        a, _ = base_pair()
+        a["bundle"]["entry"][2]["resource"]["valueQuantity"]["system"] = "https://example.org/units"
+        self.assertIn("FHIR_UCUM_SYSTEM_UNVERIFIED", decide(canonical("fhir", a)).reasons)
+
+    def test_missing_quantity_abstains(self):
+        a, _ = base_pair()
+        del a["bundle"]["entry"][2]["resource"]["valueQuantity"]
+        self.assertEqual("ABSTAIN", decide(canonical("fhir", a)).clinical)
+
+    def test_timezones_same_instant_are_equivalent(self):
+        from comparison import compare
+        a, b = base_pair()
+        b["lab"]["collected_at"] = "2026-11-20T05:30:00+00:00"
+        ca, cb = canonical("fhir", a), canonical("legacy", b)
+        self.assertTrue(compare(ca, cb, decide(ca), decide(cb))["equivalent"])
+
+    def test_consent_difference_does_not_mutate_clinical_recommendation(self):
+        from comparison import compare
+        a, b = base_pair()
+        b["workflow"]["consent_to_message"] = False
+        ca, cb = canonical("fhir", a), canonical("legacy", b)
+        axes = compare(ca, cb, decide(ca), decide(cb))["axes"]
+        self.assertTrue(axes["clinical_decision"])
+        self.assertTrue(axes["evidence"])
+        self.assertFalse(axes["communication_authorization"])
+        self.assertFalse(axes["workflow_context"])
+
+    def test_scenario_report_contains_all_six_axes(self):
+        result = run()
+        self.assertTrue(result["summary"]["all_expectations_met"])
+        names = {"evidence", "clinical_decision", "communication_authorization",
+                 "reason_codes", "workflow_context", "rule_identity"}
+        for case in result["cases"]:
+            self.assertEqual(names, set(case["comparison"]["axes"]))
+            if case["expected_relation"] == "same":
+                self.assertEqual([], case["comparison"]["discrepancy_axes"])
+
+    def test_missing_fhir_bundle_fails_closed(self):
+        a, _ = base_pair()
+        del a["bundle"]
+        self.assertEqual("ABSTAIN", decide(canonical("fhir", a)).clinical)
+
 if __name__ == '__main__':
     unittest.main()
