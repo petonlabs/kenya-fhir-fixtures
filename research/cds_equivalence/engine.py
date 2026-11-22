@@ -7,7 +7,7 @@ from contracts import Decision, RULE_ID, RULE_VERSION, POLICY, REFERENCE_TIME, S
 def decide(ctx: dict[str, Any]) -> Decision:
     """Fail-closed deterministic policy. No generative model on decision path."""
     f, w = ctx["facts"], ctx["workflow"]
-    reasons: list[str] = []
+    reasons: list[str] = list(ctx.get("adapter_issues", []))
     if not w["identity_verified"]:
         reasons.append("IDENTITY_NOT_VERIFIED")
     if not f["patient"] or f["encounter_patient"] != f["patient"] or f["observation_patient"] != f["patient"]:

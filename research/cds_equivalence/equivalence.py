@@ -11,6 +11,7 @@ from contracts import POLICY, RULE_ID, RULE_VERSION, REFERENCE_TIME, MAPPING_VER
 from contracts import SYSTEM_LOINC, HB_LOINC, Decision, digest
 from adapters import canonical
 from engine import decide
+from comparison import compare
 
 def base_pair() -> tuple[dict[str, Any], dict[str, Any]]:
     wf = {"identity_verified": True, "consent_to_message": True, "recipient": "+254700000000",
@@ -72,11 +73,12 @@ def run() -> dict[str, Any]:
         legacy_ctx = canonical("legacy", case["legacy"])
         fhir_dec = decide(fhir_ctx)
         legacy_dec = decide(legacy_ctx)
-        equivalent = (fhir_dec.clinical, fhir_dec.communication, fhir_dec.reasons) == (legacy_dec.clinical, legacy_dec.communication, legacy_dec.reasons)
+        comparison = compare(fhir_ctx, legacy_ctx, fhir_dec, legacy_dec)
+        equivalent = comparison["equivalent"]
         expected_same = case["expected"] == "same"
         records.append({
             "case_id": case["id"], "description": case["description"], "expected_relation": case["expected"],
-            "observed_equivalent": equivalent, "detector_matched_expected": equivalent == expected_same,
+            "observed_equivalent": equivalent, "comparison": comparison, "detector_matched_expected": equivalent == expected_same,
             "local_fhir_shape_errors": shape, "fhir": {"canonical": fhir_ctx, "decision": asdict(fhir_dec)},
             "legacy": {"canonical": legacy_ctx, "decision": asdict(legacy_dec)},
             "audit_hash_sha256": digest({"case": case["id"], "fhir": fhir_ctx, "legacy": legacy_ctx, "fhir_decision": asdict(fhir_dec), "legacy_decision": asdict(legacy_dec)})
